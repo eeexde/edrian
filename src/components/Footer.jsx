@@ -10,22 +10,18 @@ export default function Footer() {
       </p>
       <div className="flex items-center justify-center gap-6">
         <a
-          href="mailto:edrianpasaylo@gmail.com"
+          href="mailto:pasaylo.ed03@gmail.com"
           className="text-white/40 hover:text-cyan-400 text-sm transition-colors duration-200"
         >
           Email
         </a>
         <a
-          href="https://linkedin.com/in/edrian-pasaylo"
+          href="https://www.onlinejobs.ph/jobseekers/info/4228054"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-white/40 hover:text-cyan-400 text-sm transition-colors duration-200"
         >
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/edrian"
-          className="text-white/40 hover:text-cyan-400 text-sm transition-colors duration-200"
-        >
-          GitHub
+          OnlineJobs.ph
         </a>
       </div>
     </footer>
