@@ -5,7 +5,9 @@ export default {
     extend: {
       colors: {
         cyan: {
+          300: '#67E8F9',
           400: '#00D4FF',
+          500: '#06B6D4',
         },
       },
       fontFamily: {

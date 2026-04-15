@@ -1,6 +1,6 @@
 // src/components/Nav.jsx
 export default function Nav() {
-  const links = ['Skills', 'Projects', 'Experience', 'Rates', 'Contact']
+  const links = ['Skills', 'Projects', 'Experience', 'Tools', 'Rates', 'Contact']
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5">
