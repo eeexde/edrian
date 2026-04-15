@@ -12,7 +12,14 @@ export default function Skills() {
         {skills.map((skill) => (
           <GlassCard key={skill.name}>
             <div className="flex items-start justify-between mb-4">
-              <span className="text-3xl">{skill.icon}</span>
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 p-2">
+                <img
+                  src={skill.logo}
+                  alt={skill.name}
+                  className="w-full h-full object-contain"
+                  onError={(e) => { e.target.style.display = 'none' }}
+                />
+              </div>
               <Badge>{skill.level}</Badge>
             </div>
             <h3 className="font-heading text-lg font-bold text-white mb-2">{skill.name}</h3>
