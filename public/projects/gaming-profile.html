@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaming Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050508;
+    --surface: #0a0a12;
+    --card: #0d0d1a;
+    --accent: #00f5ff;
+    --accent2: #ff2d78;
+    --accent3: #b8ff3c;
+    --text: #e8e8f0;
+    --muted: #6a6a8a;
+    --glow: 0 0 20px rgba(0,245,255,0.4);
+    --glow2: 0 0 20px rgba(255,45,120,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* Grid background */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  header {
+    padding: 48px 0 32px;
+    position: relative;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 100%);
+    border: 2px solid var(--accent);
+    box-shadow: var(--glow), inset 0 0 30px rgba(0,245,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(0,245,255,0.15));
+  }
+
+  .avatar-corner {
+    position: absolute;
+    width: 14px; height: 14px;
+    border-color: var(--accent2);
+    border-style: solid;
+    border-width: 0;
+  }
+  .avatar-corner.tl { top: -2px; left: -2px; border-top-width: 3px; border-left-width: 3px; }
+  .avatar-corner.br { bottom: -2px; right: -2px; border-bottom-width: 3px; border-right-width: 3px; }
+
+  .profile-info { flex: 1; min-width: 220px; }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--accent3);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent3);
+    box-shadow: 0 0 8px var(--accent3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .username {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+    background: linear-gradient(90deg, #fff 0%, var(--accent) 60%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 6px;
+  }
+
+  .tagline {
+    font-size: 15px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 32px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Orbitron', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+    margin: 8px 0 40px;
+    opacity: 0.4;
+  }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,245,255,0.3), transparent);
+  }
+
+  /* ── GAMES GRID ── */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .game-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .game-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: var(--glow);
+  }
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--card-accent, var(--accent));
+  }
+  .game-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, var(--card-glow, rgba(0,245,255,0.04)) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .game-card.mhw { --card-accent: #ff6b35; --card-glow: rgba(255,107,53,0.06); }
+  .game-card.valorant { --card-accent: #ff4655; --card-glow: rgba(255,70,85,0.06); }
+  .game-card.deathstr { --card-accent: #e8c97a; --card-glow: rgba(232,201,122,0.06); }
+  .game-card.cyberpunk { --card-accent: #fcee09; --card-glow: rgba(252,238,9,0.06); }
+  .game-card.elden { --card-accent: #c9a227; --card-glow: rgba(201,162,39,0.06); }
+  .game-card.apex { --card-accent: #e8572a; --card-glow: rgba(232,87,42,0.06); }
+
+  .game-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+  .game-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+  .game-genre {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .game-bar-wrap { margin-top: 10px; }
+  .game-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 4px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .game-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .game-bar-fill {
+    height: 100%;
+    background: var(--card-accent, var(--accent));
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--card-accent, var(--accent));
+    animation: barFill 1.2s ease-out both;
+  }
+  @keyframes barFill { from { width: 0 !important; } }
+
+  .game-hours {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    margin-top: 10px;
+  }
+  .game-hours span { font-size: 11px; color: var(--muted); margin-left: 4px; }
+
+  /* ── SPECS ── */
+  .specs-panel {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    padding: 28px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .specs-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .specs-panel::after {
+    content: 'SYS_SPECS';
+    position: absolute;
+    right: 20px;
+    bottom: 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 48px;
+    color: rgba(0,245,255,0.03);
+    font-weight: 900;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 24px;
+  }
+
+  .spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .spec-icon { font-size: 22px; margin-bottom: 4px; }
+  .spec-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .spec-value {
+    font-family: 'Orbitron', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .spec-sub {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ── ACTIVITY STRIP ── */
+  .activity-strip {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .activity-cell {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    background: rgba(0,245,255,0.05);
+    transition: background 0.2s;
+  }
+  .activity-cell.l1 { background: rgba(0,245,255,0.15); }
+  .activity-cell.l2 { background: rgba(0,245,255,0.35); }
+  .activity-cell.l3 { background: rgba(0,245,255,0.6); }
+  .activity-cell.l4 { background: rgba(0,245,255,0.9); box-shadow: 0 0 6px rgba(0,245,255,0.5); }
+  .activity-cell:hover { transform: scale(1.4); z-index: 2; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .footer-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    box-shadow: 0 0 8px var(--accent2);
+    animation: pulse 2s ease-in-out infinite 0.5s;
+    display: inline-block;
+    margin: 0 8px;
+  }
+
+  /* Entry animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+  .delay-6 { animation-delay: 0.6s; }
+
+  @media (max-width: 600px) {
+    .games-grid { grid-template-columns: 1fr 1fr; }
+    .stats-row { gap: 20px; }
+  }
+  @media (max-width: 400px) {
+    .games-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="fade-up">
+    <div class="header-inner">
+      <div class="avatar-wrap">
+        <div class="avatar">
+          🎮
+          <div class="avatar-corner tl"></div>
+          <div class="avatar-corner br"></div>
+        </div>
+      </div>
+      <div class="profile-info">
+        <div class="status-badge"><div class="status-dot"></div> Online — Currently Gaming</div>
+        <div class="username">GHOST_NOCTIS</div>
+        <div class="tagline">Slayer. Drifter. Netrunner.</div>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-num">2,481</div>
+            <div class="stat-label">Hours</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">6</div>
+            <div class="stat-label">Games</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">S+</div>
+            <div class="stat-label">Rank</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">94%</div>
+            <div class="stat-label">Win Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="divider fade-up delay-1"></div>
+
+  <!-- GAMES -->
+  <div class="section-title fade-up delay-1">Game Library</div>
+  <div class="games-grid">
+
+    <div class="game-card mhw fade-up delay-1">
+      <span class="game-icon">🐉</span>
+      <div class="game-name">MONSTER HUNTER WILDS</div>
+      <div class="game-genre">Action RPG · Hunt</div>
+      <div class="game-hours">847<span>hrs</span></div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Mastery</span><span>94%</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:94%"></div></div>
+      </div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Monsters Slain</span><span>1,203</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:78%"></div></div>
+      </div>
+    </div>
+
+    <div class="game-card valorant fade-up delay-2">
+      <span class="game-icon">🎯</span>
+      <div class="game-name">VALORANT</div>
+      <div class="game-genre">FPS · Tactical</div>
+      <div class="game-hours">562<span>hrs</span></div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Rank</span><span>Diamond II</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:72%"></div></div>
+      </div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>K/D Ratio</span><span>1.84</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:68%"></div></div>
+      </div>
+    </div>
+
+    <div class="game-card deathstr fade-up delay-3">
+      <span class="game-icon">📦</span>
+      <div class="game-name">DEATH STRANDING</div>
+      <div class="game-genre">Action · Strand</div>
+      <div class="game-hours">312<span>hrs</span></div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Completion</span><span>88%</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Deliveries</span><span>2,441</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+
+    <div class="game-card cyberpunk fade-up delay-4">
+      <span class="game-icon">🤖</span>
+      <div class="game-name">CYBERPUNK 2077</div>
+      <div class="game-genre">RPG · Open World</div>
+      <div class="game-hours">398<span>hrs</span></div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Story</span><span>100%</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Side Jobs</span><span>96%</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:96%"></div></div>
+      </div>
+    </div>
+
+    <div class="game-card elden fade-up delay-5">
+      <span class="game-icon">⚔️</span>
+      <div class="game-name">ELDEN RING</div>
+      <div class="game-genre">Soulslike · RPG</div>
+      <div class="game-hours">287<span>hrs</span></div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Bosses</span><span>100%</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Deaths</span><span>only 842</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:42%"></div></div>
+      </div>
+    </div>
+
+    <div class="game-card apex fade-up delay-6">
+      <span class="game-icon">🔥</span>
+      <div class="game-name">APEX LEGENDS</div>
+      <div class="game-genre">FPS · Battle Royale</div>
+      <div class="game-hours">75<span>hrs</span></div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Win Rate</span><span>21%</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:21%"></div></div>
+      </div>
+      <div class="game-bar-wrap">
+        <div class="game-bar-label"><span>Avg. Kills</span><span>4.3</span></div>
+        <div class="game-bar"><div class="game-bar-fill" style="width:43%"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SYSTEM SPECS -->
+  <div class="section-title fade-up">System Specs</div>
+  <div class="specs-panel fade-up delay-1">
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-icon">⚡</div>
+        <div class="spec-label">Processor</div>
+        <div class="spec-value">AMD 9600X</div>
+        <div class="spec-sub">Ryzen 9 · Zen 5 · 6-Core</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">🖥️</div>
+        <div class="spec-label">Graphics</div>
+        <div class="spec-value">RX 9060 XT</div>
+        <div class="spec-sub">RDNA 4 · 16GB GDDR6</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">🧠</div>
+        <div class="spec-label">Memory</div>
+        <div class="spec-value">32GB DDR5</div>
+        <div class="spec-sub">6000MHz · Dual Channel</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">💾</div>
+        <div class="spec-label">Storage</div>
+        <div class="spec-value">2TB NVMe</div>
+        <div class="spec-sub">PCIe 5.0 · Gen5 SSD</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">🔌</div>
+        <div class="spec-label">Platform</div>
+        <div class="spec-value">AM5</div>
+        <div class="spec-sub">X870E · ATX Motherboard</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-icon">🖱️</div>
+        <div class="spec-label">Peripherals</div>
+        <div class="spec-value">1440p 165Hz</div>
+        <div class="spec-sub">IPS · HDR400 · G-Sync</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY -->
+  <div class="section-title fade-up">Gaming Activity — Last 52 Weeks</div>
+  <div class="activity-strip fade-up delay-1" id="activityGrid"></div>
+
+  <!-- FOOTER -->
+  <footer class="fade-up">
+    <div class="footer-text">GHOST_NOCTIS<span class="footer-dot"></span>PROFILE v2.4</div>
+    <div class="footer-text">PC MASTER RACE<span class="footer-dot"></span>SINCE 2019</div>
+    <div class="footer-text" id="live-clock"></div>
+  </footer>
+
+</div>
+
+<script>
+  // Generate activity grid
+  const grid = document.getElementById('activityGrid');
+  const levels = ['', 'l1', 'l2', 'l3', 'l4'];
+  const weights = [0.3, 0.25, 0.2, 0.15, 0.1];
+  for (let i = 0; i < 364; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'activity-cell';
+    const r = Math.random();
+    let cum = 0, lvl = 0;
+    for (let j = 0; j < weights.length; j++) {
+      cum += weights[j];
+      if (r < cum) { lvl = j; break; }
+    }
+    if (lvl > 0) cell.classList.add(levels[lvl]);
+    // Spike recent activity
+    if (i > 340) cell.classList.add(['l2','l3','l4'][Math.floor(Math.random()*3)]);
+    grid.appendChild(cell);
+  }
+
+  // Live clock
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('live-clock').textContent =
+      now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+</script>
+</body>
+</html>

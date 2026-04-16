@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bahay Cebu Realty — Premium Properties in the Queen City of the South</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F2EBD9;
+    --sand-dark: #E8DCC6;
+    --ocean: #1B4F72;
+    --ocean-deep: #0E2D42;
+    --coral: #C0542A;
+    --coral-light: #D4714A;
+    --gold: #B8935A;
+    --gold-light: #D4AF7A;
+    --ink: #1A1612;
+    --mist: #8A7F74;
+    --white: #FDFAF5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(253,250,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,147,90,0.2);
+    animation: slideDown 0.8s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ocean-deep);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--coral); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ocean-deep);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--coral); }
+
+  .nav-cta {
+    background: var(--ocean);
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--coral) !important; color: var(--white) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 5rem 5rem;
+    background: var(--sand);
+    position: relative;
+    z-index: 2;
+    animation: fadeInLeft 1s 0.3s ease both;
+  }
+
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ocean-deep);
+    margin-bottom: 1.8rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--mist);
+    max-width: 400px;
+    margin-bottom: 2.8rem;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: var(--white);
+    padding: 1rem 2.2rem;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--ocean); transform: translateY(-2px); }
+
+  .btn-ghost {
+    color: var(--ocean-deep);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--coral); }
+  .btn-ghost::after { content: '→'; font-size: 1.1rem; }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(184,147,90,0.3);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--ocean-deep);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--mist);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-image {
+    position: relative;
+    overflow: hidden;
+    animation: fadeInRight 1.2s 0.5s ease both;
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .hero-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 8s ease;
+  }
+  .hero-image:hover img { transform: scale(1.04); }
+
+  .hero-overlay-badge {
+    position: absolute;
+    bottom: 3rem;
+    left: -2rem;
+    background: var(--ocean-deep);
+    color: var(--white);
+    padding: 1.4rem 2rem;
+    z-index: 3;
+  }
+  .hero-overlay-badge .badge-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .hero-overlay-badge .badge-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  /* ─── MARQUEE ─── */
+  .marquee-strip {
+    background: var(--ocean-deep);
+    padding: 0.9rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-block;
+    animation: marquee 25s linear infinite;
+  }
+  .marquee-strip span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 0 3rem;
+  }
+  .marquee-strip span.dot { color: var(--coral); padding: 0; }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ─── SEARCH BAR ─── */
+  .search-section {
+    background: var(--sand-dark);
+    padding: 3.5rem 5rem;
+  }
+
+  .search-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--ocean-deep);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .search-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 8px 32px rgba(27,79,114,0.15);
+  }
+
+  .search-field {
+    padding: 1.2rem 1.5rem;
+    border: none;
+    background: var(--white);
+    border-right: 1px solid var(--sand-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    outline: none;
+  }
+  .search-field:focus { background: #FFFFF8; }
+
+  .search-field label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 0.25rem;
+  }
+
+  .search-field select {
+    border: none; background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    width: 100%; cursor: pointer; outline: none;
+  }
+
+  .search-btn {
+    background: var(--coral);
+    color: var(--white);
+    border: none;
+    padding: 0 2.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .search-btn:hover { background: var(--ocean); }
+
+  /* ─── FEATURED PROPERTIES ─── */
+  .section {
+    padding: 6rem 5rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    color: var(--ocean-deep);
+    line-height: 1.1;
+  }
+
+  .section-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ocean);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .section-link:hover { color: var(--coral); }
+  .section-link::after { content: '→'; }
+
+  /* property grid */
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .property-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--sand);
+  }
+
+  .property-card.large {
+    grid-row: span 2;
+  }
+
+  .property-img {
+    width: 100%; height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .property-card.large .property-img { height: 562px; }
+
+  .property-card:hover .property-img { transform: scale(1.06); }
+
+  .property-tag {
+    position: absolute;
+    top: 1.2rem; left: 1.2rem;
+    background: var(--coral);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .property-tag.for-rent { background: var(--ocean); }
+  .property-tag.preselling { background: var(--gold); }
+
+  .property-info {
+    padding: 1.4rem 1.6rem;
+    background: var(--white);
+  }
+
+  .property-location {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.4rem;
+  }
+
+  .property-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ocean-deep);
+    margin-bottom: 0.6rem;
+  }
+
+  .property-specs {
+    display: flex; gap: 1.2rem;
+    font-size: 0.78rem;
+    color: var(--mist);
+    margin-bottom: 1rem;
+  }
+
+  .property-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ocean-deep);
+  }
+
+  .property-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--mist);
+    margin-left: 0.3rem;
+  }
+
+  /* ─── NEIGHBORHOODS ─── */
+  .neighborhoods {
+    background: var(--ocean-deep);
+    padding: 6rem 5rem;
+  }
+
+  .neighborhoods .section-eyebrow { color: var(--gold-light); }
+  .neighborhoods .section-title { color: var(--white); }
+  .neighborhoods .section-link { color: var(--gold-light); }
+  .neighborhoods .section-link:hover { color: var(--coral-light); }
+
+  .nbhd-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .nbhd-card {
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+    cursor: pointer;
+  }
+
+  .nbhd-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: brightness(0.7);
+  }
+
+  .nbhd-card:hover img { transform: scale(1.08); filter: brightness(0.55); }
+
+  .nbhd-info {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 2rem 1.5rem 1.5rem;
+    background: linear-gradient(to top, rgba(14,45,66,0.95), transparent);
+    transition: padding 0.3s;
+  }
+
+  .nbhd-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .nbhd-count {
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── WHY CEBU ─── */
+  .why-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+
+  .why-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .why-content {
+    background: var(--sand);
+    padding: 6rem 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .why-list {
+    list-style: none;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .why-icon {
+    width: 42px; height: 42px;
+    flex-shrink: 0;
+    background: var(--ocean-deep);
+    color: var(--gold-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .why-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ocean-deep);
+    margin-bottom: 0.2rem;
+  }
+
+  .why-text p {
+    font-size: 0.83rem;
+    color: var(--mist);
+    line-height: 1.6;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials {
+    padding: 6rem 5rem;
+    background: var(--white);
+    text-align: center;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .testi-card {
+    background: var(--sand);
+    padding: 2.5rem 2rem;
+    text-align: left;
+    position: relative;
+  }
+
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .testi-text {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .testi-name {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--ocean-deep);
+  }
+
+  .testi-location {
+    font-size: 0.75rem;
+    color: var(--mist);
+    letter-spacing: 0.1em;
+  }
+
+  .testi-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: var(--coral);
+    padding: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .cta-text .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 0.8rem;
+  }
+
+  .cta-text .cta-sub {
+    color: rgba(253,250,245,0.75);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 480px;
+  }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--coral);
+    padding: 1.1rem 2.5rem;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    transition: transform 0.2s;
+  }
+  .btn-white:hover { transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ocean-deep);
+    color: var(--white);
+    padding: 5rem 5rem 2.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .footer-brand .nav-logo {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .footer-desc {
+    font-size: 0.83rem;
+    color: rgba(253,250,245,0.55);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-contact {
+    font-size: 0.83rem;
+    color: var(--gold-light);
+    line-height: 2;
+  }
+
+  .footer-heading {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: rgba(253,250,245,0.6);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(253,250,245,0.4);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { height: 50vw; }
+    .hero-content { padding: 7rem 2rem 3rem; }
+    .section { padding: 4rem 2rem; }
+    .properties-grid { grid-template-columns: 1fr 1fr; }
+    .property-card.large { grid-row: span 1; }
+    .property-card.large .property-img { height: 280px; }
+    .nbhd-grid { grid-template-columns: 1fr 1fr; }
+    .why-section { grid-template-columns: 1fr; }
+    .why-image { height: 300px; }
+    .testi-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .cta-banner { flex-direction: column; padding: 3rem 2rem; text-align: center; }
+    .search-section { padding: 3rem 2rem; }
+    .search-bar { grid-template-columns: 1fr 1fr; }
+    .search-btn { padding: 1rem; grid-column: span 2; }
+    .neighborhoods { padding: 4rem 2rem; }
+    footer { padding: 3rem 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Bahay<span>Cebu</span> Realty</a>
+  <ul class="nav-links">
+    <li><a href="#">Properties</a></li>
+    <li><a href="#">Neighborhoods</a></li>
+    <li><a href="#">New Developments</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Cebu's Premier Real Estate</p>
+    <h1 class="hero-title">Find Your<br>Home in the<br><em>Queen City</em></h1>
+    <p class="hero-sub">From beachfront villas in Mactan to urban condominiums in Cebu City, we connect you to the finest properties across the Pearl of the South.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Explore Listings</a>
+      <a href="#" class="btn-ghost">Virtual Tour</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">850+</span>
+        <span class="stat-label">Active Listings</span>
+      </div>
+      <div>
+        <span class="stat-num">14+</span>
+        <span class="stat-label">Cities & Towns</span>
+      </div>
+      <div>
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Client Satisfaction</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=900&q=85" alt="Luxury property in Cebu">
+    <div class="hero-overlay-badge">
+      <span class="badge-label">Featured Property</span>
+      <span class="badge-value">Mactan Island Villa</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>Cebu City</span><span class="dot">◆</span>
+    <span>Mactan Island</span><span class="dot">◆</span>
+    <span>Lapu-Lapu City</span><span class="dot">◆</span>
+    <span>Mandaue</span><span class="dot">◆</span>
+    <span>Liloan</span><span class="dot">◆</span>
+    <span>Consolacion</span><span class="dot">◆</span>
+    <span>Talisay City</span><span class="dot">◆</span>
+    <span>Minglanilla</span><span class="dot">◆</span>
+    <span>Naga City</span><span class="dot">◆</span>
+    <span>Moalboal</span><span class="dot">◆</span>
+    <span>Oslob</span><span class="dot">◆</span>
+    <span>Bohol Access</span><span class="dot">◆</span>
+    &nbsp;&nbsp;
+    <span>Cebu City</span><span class="dot">◆</span>
+    <span>Mactan Island</span><span class="dot">◆</span>
+    <span>Lapu-Lapu City</span><span class="dot">◆</span>
+    <span>Mandaue</span><span class="dot">◆</span>
+    <span>Liloan</span><span class="dot">◆</span>
+    <span>Consolacion</span><span class="dot">◆</span>
+    <span>Talisay City</span><span class="dot">◆</span>
+    <span>Minglanilla</span><span class="dot">◆</span>
+    <span>Naga City</span><span class="dot">◆</span>
+    <span>Moalboal</span><span class="dot">◆</span>
+    <span>Oslob</span><span class="dot">◆</span>
+    <span>Bohol Access</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<section class="search-section">
+  <p class="search-title">Search Your Ideal Property</p>
+  <div class="search-bar">
+    <div class="search-field">
+      <label>Location</label>
+      <select>
+        <option>All Areas in Cebu</option>
+        <option>Cebu City</option>
+        <option>Mactan Island</option>
+        <option>Lapu-Lapu City</option>
+        <option>Mandaue City</option>
+        <option>Liloan</option>
+        <option>Talisay City</option>
+        <option>South Cebu</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Property Type</label>
+      <select>
+        <option>All Types</option>
+        <option>Condominium</option>
+        <option>House & Lot</option>
+        <option>Villa / Beachfront</option>
+        <option>Townhouse</option>
+        <option>Commercial</option>
+        <option>Lot Only</option>
+      </select>
+    </div>
+    <div class="search-field">
+      <label>Price Range</label>
+      <select>
+        <option>Any Budget</option>
+        <option>Under ₱3M</option>
+        <option>₱3M – ₱8M</option>
+        <option>₱8M – ₱20M</option>
+        <option>₱20M – ₱50M</option>
+        <option>₱50M+</option>
+      </select>
+    </div>
+    <button class="search-btn">Search</button>
+  </div>
+</section>
+
+<!-- FEATURED PROPERTIES -->
+<section class="section">
+  <div class="section-header fade-up">
+    <div>
+      <p class="section-eyebrow">Curated Selection</p>
+      <h2 class="section-title">Featured<br>Properties</h2>
+    </div>
+    <a href="#" class="section-link">All Listings</a>
+  </div>
+  <div class="properties-grid fade-up">
+
+    <div class="property-card large">
+      <span class="property-tag">For Sale</span>
+      <img class="property-img" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=700&q=80" alt="Beachfront Villa Mactan">
+      <div class="property-info">
+        <p class="property-location">Mactan Island, Lapu-Lapu</p>
+        <h3 class="property-name">Azure Cove Beachfront Villa</h3>
+        <div class="property-specs">
+          <span>🛏 4 Beds</span>
+          <span>🚿 4 Baths</span>
+          <span>📐 480 m²</span>
+          <span>🏊 Pool</span>
+        </div>
+        <p class="property-price">₱38,500,000 <span>negotiable</span></p>
+      </div>
+    </div>
+
+    <div class="property-card">
+      <span class="property-tag preselling">Pre-selling</span>
+      <img class="property-img" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80" alt="Condo Cebu City">
+      <div class="property-info">
+        <p class="property-location">IT Park, Cebu City</p>
+        <h3 class="property-name">Skyline Residences</h3>
+        <div class="property-specs">
+          <span>🛏 2 Beds</span>
+          <span>🚿 2 Baths</span>
+          <span>📐 72 m²</span>
+        </div>
+        <p class="property-price">₱6,200,000</p>
+      </div>
+    </div>
+
+    <div class="property-card">
+      <span class="property-tag for-rent">For Rent</span>
+      <img class="property-img" src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="House Lot Liloan">
+      <div class="property-info">
+        <p class="property-location">Liloan, Cebu</p>
+        <h3 class="property-name">Hillcrest Garden Home</h3>
+        <div class="property-specs">
+          <span>🛏 3 Beds</span>
+          <span>🚿 2 Baths</span>
+          <span>📐 210 m²</span>
+        </div>
+        <p class="property-price">₱45,000 <span>/month</span></p>
+      </div>
+    </div>
+
+    <div class="property-card">
+      <span class="property-tag">For Sale</span>
+      <img class="property-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Townhouse Mandaue">
+      <div class="property-info">
+        <p class="property-location">Mandaue City</p>
+        <h3 class="property-name">The Dunes Townhouse</h3>
+        <div class="property-specs">
+          <span>🛏 3 Beds</span>
+          <span>🚿 3 Baths</span>
+          <span>📐 150 m²</span>
+        </div>
+        <p class="property-price">₱9,800,000</p>
+      </div>
+    </div>
+
+    <div class="property-card">
+      <span class="property-tag preselling">Pre-selling</span>
+      <img class="property-img" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80" alt="House South Cebu">
+      <div class="property-info">
+        <p class="property-location">Talisay City</p>
+        <h3 class="property-name">Sandalwood Estates</h3>
+        <div class="property-specs">
+          <span>🛏 4 Beds</span>
+          <span>🚿 3 Baths</span>
+          <span>📐 320 m²</span>
+        </div>
+        <p class="property-price">₱14,500,000</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- NEIGHBORHOODS -->
+<section class="neighborhoods">
+  <div class="section-header fade-up">
+    <div>
+      <p class="section-eyebrow">Explore Cebu</p>
+      <h2 class="section-title" style="color:var(--white)">Top<br>Neighborhoods</h2>
+    </div>
+    <a href="#" class="section-link">View Map</a>
+  </div>
+  <div class="nbhd-grid fade-up">
+    <div class="nbhd-card">
+      <img src="https://images.unsplash.com/photo-1555217851-6141535bd771?w=500&q=80" alt="Cebu City">
+      <div class="nbhd-info">
+        <span class="nbhd-name">Cebu City</span>
+        <span class="nbhd-count">320 Properties</span>
+      </div>
+    </div>
+    <div class="nbhd-card">
+      <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=500&q=80" alt="Mactan Island">
+      <div class="nbhd-info">
+        <span class="nbhd-name">Mactan Island</span>
+        <span class="nbhd-count">180 Properties</span>
+      </div>
+    </div>
+    <div class="nbhd-card">
+      <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&q=80" alt="South Cebu">
+      <div class="nbhd-info">
+        <span class="nbhd-name">South Cebu</span>
+        <span class="nbhd-count">215 Properties</span>
+      </div>
+    </div>
+    <div class="nbhd-card">
+      <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=500&q=80" alt="North Cebu">
+      <div class="nbhd-info">
+        <span class="nbhd-name">North Cebu</span>
+        <span class="nbhd-count">135 Properties</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CEBU -->
+<section class="why-section">
+  <div class="why-image">
+    <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80" alt="Cebu Lifestyle">
+  </div>
+  <div class="why-content">
+    <p class="section-eyebrow">Why Invest Here</p>
+    <h2 class="section-title">Life is Better<br>in Cebu</h2>
+    <ul class="why-list">
+      <li class="why-item fade-up">
+        <div class="why-icon">✈️</div>
+        <div class="why-text">
+          <strong>International Connectivity</strong>
+          <p>Mactan-Cebu International Airport serves direct routes across Asia, making it ideal for expats and investors alike.</p>
+        </div>
+      </li>
+      <li class="why-item fade-up">
+        <div class="why-icon">📈</div>
+        <div class="why-text">
+          <strong>Strong Property Appreciation</strong>
+          <p>Cebu real estate has seen consistent 8–12% annual appreciation, outperforming many Philippine markets.</p>
+        </div>
+      </li>
+      <li class="why-item fade-up">
+        <div class="why-icon">🌊</div>
+        <div class="why-text">
+          <strong>World-Class Lifestyle</strong>
+          <p>From pristine beaches to modern malls, award-winning restaurants and heritage culture — all in one island province.</p>
+        </div>
+      </li>
+      <li class="why-item fade-up">
+        <div class="why-icon">🏥</div>
+        <div class="why-text">
+          <strong>Premier Infrastructure</strong>
+          <p>Cebu boasts top-tier hospitals, international schools, BPO hubs, and rapidly expanding road networks.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="fade-up">
+    <p class="section-eyebrow" style="text-align:center">Client Stories</p>
+    <h2 class="section-title" style="text-align:center">What Our Clients Say</h2>
+  </div>
+  <div class="testi-grid fade-up">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">BahayСebu Realty found us the perfect home in Liloan. Their knowledge of the local market is unmatched, and they handled everything so smoothly — from viewing to turnover.</p>
+      <p class="testi-name">Maria Santos</p>
+      <p class="testi-location">OFW — Dubai to Liloan, Cebu</p>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">As a foreign investor, I was nervous about buying property in the Philippines. The team guided me through every legal step and I now own a beautiful beachfront unit in Mactan.</p>
+      <p class="testi-name">Hiroshi Tanaka</p>
+      <p class="testi-location">Japanese Investor — Mactan Island</p>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">We relocated from Manila and BahayСebu made the transition seamless. They knew exactly what we needed — a family home near a good school, at the right price.</p>
+      <p class="testi-name">The Reyes Family</p>
+      <p class="testi-location">Manila to Talisay City, Cebu</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner fade-up">
+  <div class="cta-text">
+    <h2 class="cta-title">Ready to Find<br>Your Cebu Dream Home?</h2>
+    <p class="cta-sub">Our property consultants are ready to guide you — whether you're buying, selling, renting, or investing in Cebu real estate.</p>
+  </div>
+  <a href="#" class="btn-white">Schedule a Consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">Bahay<span>Cebu</span> Realty</a>
+      <p class="footer-desc">The Philippines' most trusted real estate partner for Cebu properties. Connecting families, investors, and dreamers to the best the Queen City of the South has to offer.</p>
+      <div class="footer-contact">
+        📞 +63 32 888 7000<br>
+        📧 hello@bahaycebu.com<br>
+        📍 Ayala Center Cebu, Cebu City
+      </div>
+    </div>
+    <div>
+      <p class="footer-heading">Properties</p>
+      <ul class="footer-links">
+        <li><a href="#">Houses & Lots</a></li>
+        <li><a href="#">Condominiums</a></li>
+        <li><a href="#">Villas & Beachfront</a></li>
+        <li><a href="#">Townhouses</a></li>
+        <li><a href="#">Lot Only</a></li>
+        <li><a href="#">Commercial</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Areas</p>
+      <ul class="footer-links">
+        <li><a href="#">Cebu City</a></li>
+        <li><a href="#">Mactan Island</a></li>
+        <li><a href="#">Mandaue City</a></li>
+        <li><a href="#">Lapu-Lapu City</a></li>
+        <li><a href="#">South Cebu</a></li>
+        <li><a href="#">North Cebu</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Company</p>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Agents</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">News & Insights</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">PRC License</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 BahayСebu Realty. All rights reserved. PRC License No. 12345.</span>
+    <span>Privacy Policy · Terms of Use</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

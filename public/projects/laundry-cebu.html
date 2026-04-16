@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FreshWave Laundry — Cebu City</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --sky: #d6eaf4;
+      --deep: #1a3a4f;
+      --foam: #f0f8ff;
+      --wave: #4eb3d3;
+      --sun: #f5c842;
+      --sand: #f9f3e8;
+      --text: #1a2a35;
+      --muted: #6a8899;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--foam);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 6vw;
+      background: rgba(240,248,255,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(78,179,211,0.15);
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--deep); letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--wave); }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav ul a {
+      text-decoration: none; font-size: 0.9rem; font-weight: 500;
+      color: var(--muted); transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--deep); }
+    .nav-cta {
+      background: var(--deep); color: #fff !important;
+      padding: 0.55rem 1.3rem; border-radius: 999px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--wave) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 6vw 4rem; gap: 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute;
+      top: -120px; right: -100px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(78,179,211,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(78,179,211,0.12);
+      border: 1px solid rgba(78,179,211,0.3);
+      color: var(--wave); font-size: 0.78rem; font-weight: 500;
+      padding: 0.4rem 1rem; border-radius: 999px;
+      margin-bottom: 1.5rem; letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 700;
+      line-height: 1.05; letter-spacing: -0.03em;
+      color: var(--deep); margin-bottom: 1.5rem;
+    }
+    h1 em { font-style: italic; font-weight: 300; color: var(--wave); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--muted);
+      line-height: 1.7; max-width: 440px; margin-bottom: 2.5rem;
+    }
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--deep); color: #fff;
+      padding: 0.9rem 2rem; border-radius: 999px;
+      text-decoration: none; font-size: 0.95rem; font-weight: 500;
+      transition: all 0.25s; display: inline-flex; align-items: center; gap: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--wave); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(78,179,211,0.3); }
+    .btn-outline {
+      border: 1.5px solid var(--deep); color: var(--deep);
+      padding: 0.9rem 2rem; border-radius: 999px;
+      text-decoration: none; font-size: 0.95rem; font-weight: 500;
+      transition: all 0.25s;
+    }
+    .btn-outline:hover { background: var(--deep); color: #fff; transform: translateY(-2px); }
+
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center; position: relative;
+    }
+    .drum {
+      width: 320px; height: 320px; border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--wave), #a8ddf0, var(--deep), var(--wave));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 30px 80px rgba(78,179,211,0.3);
+      animation: spin 18s linear infinite;
+    }
+    .drum-inner {
+      width: 200px; height: 200px; border-radius: 50%;
+      background: var(--foam);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      box-shadow: inset 0 4px 20px rgba(78,179,211,0.2);
+      animation: spin 18s linear infinite reverse;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .bubble {
+      position: absolute; border-radius: 50%;
+      background: rgba(78,179,211,0.12);
+      border: 1.5px solid rgba(78,179,211,0.25);
+      animation: float 4s ease-in-out infinite;
+    }
+    .b1 { width: 70px; height: 70px; top: 20px; left: -20px; animation-delay: 0s; }
+    .b2 { width: 45px; height: 45px; bottom: 50px; right: -30px; animation-delay: 1.2s; }
+    .b3 { width: 30px; height: 30px; top: 60px; right: 10px; animation-delay: 0.7s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    .stats-row { display: flex; gap: 2.5rem; margin-top: 3rem; }
+    .stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--deep); line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+
+    /* SHARED */
+    section { padding: 6rem 6vw; }
+    .section-tag {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--wave); margin-bottom: 0.8rem;
+    }
+    h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
+      letter-spacing: -0.025em; color: var(--deep); line-height: 1.15; margin-bottom: 1rem;
+    }
+    h2 em { font-style: italic; font-weight: 300; color: var(--wave); }
+
+    /* SERVICES */
+    .services { background: var(--sand); }
+    .services-intro { max-width: 540px; margin-bottom: 3.5rem; }
+    .services-intro p { color: var(--muted); line-height: 1.7; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;
+    }
+    .service-card {
+      background: #fff; border-radius: 20px; padding: 2rem;
+      border: 1px solid rgba(78,179,211,0.12);
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--wave), var(--deep));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,58,79,0.1); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(78,179,211,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .service-card h3 {
+      font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 700;
+      color: var(--deep); margin-bottom: 0.6rem;
+    }
+    .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .service-price { margin-top: 1.2rem; font-weight: 500; font-size: 0.85rem; color: var(--wave); }
+
+    /* HOW IT WORKS */
+    .how { background: var(--foam); }
+    .how-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .step { display: flex; flex-direction: column; gap: 1rem; }
+    .step-num {
+      font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 700;
+      color: rgba(78,179,211,0.2); line-height: 1;
+    }
+    .step h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--deep); }
+    .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+    /* WHY US */
+    .why { background: var(--deep); color: #fff; }
+    .why .section-tag { color: var(--sun); }
+    .why h2 { color: #fff; }
+    .why h2 em { color: var(--sun); }
+    .why-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center; margin-top: 3rem;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 1.8rem; }
+    .why-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+    .why-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 12px; background: rgba(245,200,66,0.15);
+      border: 1px solid rgba(245,200,66,0.25);
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .why-item h4 { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+    .why-item p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .why-visual {
+      background: rgba(255,255,255,0.06); border-radius: 24px; padding: 2.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.08); border-radius: 16px; padding: 1.8rem;
+      margin-bottom: 1.2rem; border: 1px solid rgba(255,255,255,0.1);
+    }
+    .testimonial-card p { font-size: 0.92rem; color: rgba(255,255,255,0.8); line-height: 1.65; font-style: italic; margin-bottom: 1rem; }
+    .reviewer { display: flex; align-items: center; gap: 0.8rem; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--wave), var(--deep));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; font-weight: 700; color: #fff;
+    }
+    .reviewer-info strong { display: block; font-size: 0.85rem; color: #fff; }
+    .reviewer-info span { font-size: 0.75rem; color: rgba(255,255,255,0.45); }
+    .stars { color: var(--sun); font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 0.8rem; }
+
+    /* LOCATIONS */
+    .locations { background: var(--sand); }
+    .loc-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .loc-card {
+      background: #fff; border-radius: 20px; padding: 1.8rem;
+      border: 1px solid rgba(78,179,211,0.1); transition: all 0.3s;
+    }
+    .loc-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,58,79,0.08); }
+    .loc-pin { font-size: 1.6rem; margin-bottom: 1rem; }
+    .loc-card h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 700; color: var(--deep); margin-bottom: 0.4rem; }
+    .loc-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .loc-hours {
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid rgba(78,179,211,0.12);
+      font-size: 0.8rem; color: var(--wave); font-weight: 500;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--wave) 0%, var(--deep) 100%);
+      text-align: center; padding: 7rem 6vw; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute;
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(255,255,255,0.05); pointer-events: none;
+    }
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section h2 em { color: var(--sun); }
+    .cta-section p {
+      color: rgba(255,255,255,0.75); margin-bottom: 2.5rem; font-size: 1.05rem;
+      max-width: 480px; margin-left: auto; margin-right: auto;
+    }
+    .btn-light {
+      background: #fff; color: var(--deep);
+      padding: 0.9rem 2.2rem; border-radius: 999px;
+      text-decoration: none; font-size: 0.95rem; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.25s; margin: 0.5rem;
+    }
+    .btn-light:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep); color: rgba(255,255,255,0.5);
+      padding: 3rem 6vw;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer .logo { color: #fff; font-size: 1.2rem; }
+    footer p { font-size: 0.82rem; }
+
+    /* ANIMATIONS */
+    .fade-in { opacity: 0; transform: translateY(28px); animation: fadeIn 0.7s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; transform: none; } }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 7rem; gap: 3rem; }
+      .hero-visual { order: -1; }
+      .drum { width: 220px; height: 220px; }
+      .drum-inner { width: 140px; height: 140px; font-size: 2.5rem; }
+      .stats-row { gap: 1.5rem; flex-wrap: wrap; }
+      .why-layout { grid-template-columns: 1fr; gap: 3rem; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Fresh<span>Wave</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#locations">Locations</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-badge fade-in">Cebu's Freshest Laundry Service</div>
+    <h1 class="fade-in delay-1">Clean clothes,<br><em>zero</em> hassle.</h1>
+    <p class="hero-sub fade-in delay-2">
+      Drop off your laundry and we'll have it washed, dried, and folded to perfection — ready same day. Serving Cebu City and nearby areas.
+    </p>
+    <div class="btn-group fade-in delay-3">
+      <a href="#contact" class="btn-primary">📦 Drop Off Today</a>
+      <a href="#services" class="btn-outline">See Services</a>
+    </div>
+    <div class="stats-row fade-in delay-4">
+      <div class="stat-item">
+        <span class="stat-num">2,500+</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">6hrs</span>
+        <span class="stat-label">Same-Day Turnaround</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Cebu Branches</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual fade-in delay-2">
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="drum">
+      <div class="drum-inner">🧺</div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-intro">
+    <p class="section-tag">What We Offer</p>
+    <h2>Everything your<br><em>clothes need</em></h2>
+    <p>From everyday tees to delicate garments — we handle each piece with care using premium detergents and professional-grade machines.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">👕</div>
+      <h3>Wash & Fold</h3>
+      <p>Machine-washed, tumble-dried, and neatly folded. Perfect for everyday clothes and bulk loads.</p>
+      <div class="service-price">From ₱60/kg</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👗</div>
+      <h3>Dry Cleaning</h3>
+      <p>Gentle solvent cleaning for suits, dresses, and delicate fabrics that need extra care.</p>
+      <div class="service-price">From ₱150/piece</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛏️</div>
+      <h3>Bedding & Linens</h3>
+      <p>Duvets, comforters, pillowcases, and curtains — deep cleaned and fluffed up.</p>
+      <div class="service-price">From ₱120/set</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👟</div>
+      <h3>Sneaker Cleaning</h3>
+      <p>Hand-cleaned and restored to their original fresh look. We treat your kicks like treasure.</p>
+      <div class="service-price">From ₱200/pair</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚗</div>
+      <h3>Pickup & Delivery</h3>
+      <p>We come to you! Schedule a free pickup and get your clean laundry delivered back to your door.</p>
+      <div class="service-price">Free within 3km</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✈️</div>
+      <h3>Express Service</h3>
+      <p>Need it fast? Our 3-hour express lane gets your clothes back before your next meeting.</p>
+      <div class="service-price">+₱30 surcharge</div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <p class="section-tag">The Process</p>
+  <h2>Simple as <em>1, 2, 3</em></h2>
+  <div class="how-grid">
+    <div class="step">
+      <span class="step-num">01</span>
+      <h3>Drop Off or Schedule</h3>
+      <p>Walk in to any branch or book a pickup online. We'll confirm your slot via SMS or Messenger.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <h3>We Work Our Magic</h3>
+      <p>Your laundry is sorted, washed with the right settings, dried, and folded — all within 6 hours.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <h3>Pick Up or Receive</h3>
+      <p>Get notified when it's ready. Pick up at the branch or we'll deliver straight to your door.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <h3>Fresh & Happy 😊</h3>
+      <p>Smell the freshness. Wear with confidence. No stains, no wrinkles, no stress.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="about">
+  <p class="section-tag">Why FreshWave</p>
+  <h2>Cebu's most <em>trusted</em><br>laundry service</h2>
+  <div class="why-layout">
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <h4>Same-Day Turnaround</h4>
+          <p>Drop off before 12PM, pick up by 6PM. We respect your schedule as much as your clothes.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌿</div>
+        <div>
+          <h4>Eco-Friendly Detergents</h4>
+          <p>We use biodegradable, phosphate-free detergents — gentle on fabric, kind to our Cebu environment.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔒</div>
+        <div>
+          <h4>Secure & Tracked</h4>
+          <p>Every bag is tagged and tracked. Your items are safe with us from drop-off to delivery.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💬</div>
+        <div>
+          <h4>Real-Time SMS Updates</h4>
+          <p>Get notified at every step — when we start, when we finish, and when it's ready for pickup.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"FreshWave saved me during my busiest work week. Picked up Monday, delivered back Tuesday morning — spotless. I'm never doing laundry myself again!"</p>
+        <div class="reviewer">
+          <div class="avatar">KR</div>
+          <div class="reviewer-info">
+            <strong>Karla Reyes</strong>
+            <span>IT Professional, Cebu IT Park</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Best laundry shop in Mabolo! They handled my delicate blouses perfectly and the scent is amazing. Will keep coming back talaga!"</p>
+        <div class="reviewer">
+          <div class="avatar">MV</div>
+          <div class="reviewer-info">
+            <strong>Maria Villanueva</strong>
+            <span>Teacher, Mabolo, Cebu City</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="locations" id="locations">
+  <p class="section-tag">Find Us</p>
+  <h2>4 branches across <em>Cebu</em></h2>
+  <div class="loc-grid">
+    <div class="loc-card">
+      <div class="loc-pin">📍</div>
+      <h3>Mabolo</h3>
+      <p>Unit 3, Robinsons Mabolo Ground Floor, Mabolo, Cebu City</p>
+      <div class="loc-hours">Mon–Sun: 7:00 AM – 9:00 PM</div>
+    </div>
+    <div class="loc-card">
+      <div class="loc-pin">📍</div>
+      <h3>Lahug</h3>
+      <p>45 Salinas Drive, Lahug, Cebu City (near USC Main)</p>
+      <div class="loc-hours">Mon–Sun: 7:00 AM – 9:00 PM</div>
+    </div>
+    <div class="loc-card">
+      <div class="loc-pin">📍</div>
+      <h3>Mandaue</h3>
+      <p>NRA Building, A.S. Fortuna St., Mandaue City</p>
+      <div class="loc-hours">Mon–Sat: 8:00 AM – 8:00 PM</div>
+    </div>
+    <div class="loc-card">
+      <div class="loc-pin">📍</div>
+      <h3>Talisay</h3>
+      <p>Block 5, Centro Mall, Tabunok, Talisay City</p>
+      <div class="loc-hours">Mon–Sun: 7:00 AM – 8:00 PM</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <h2>Ready for <em>fresher</em> days?</h2>
+  <p>Book a pickup or visit any branch today. Your freshest laundry experience is just one tap away.</p>
+  <div>
+    <a href="tel:+639171234567" class="btn-light">📞 Call Us Now</a>
+    <a href="https://m.me/freshwavecebu" class="btn-light">💬 Message on FB</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Fresh<span style="color:var(--wave)">Wave</span> Laundry</div>
+  <p>© 2026 FreshWave Laundry. All rights reserved. Cebu City, Philippines.</p>
+  <p>Made with 💙 for Cebu</p>
+</footer>
+
+</body>
+</html>

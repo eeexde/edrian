@@ -86,31 +86,31 @@ export const projects = [
     name: 'BahayCebu Realty',
     description: 'Premium real estate showcase highlighting upscale properties and investment opportunities in Cebu.',
     tags: ['Claude Code'],
-    url: 'https://edrian-gamma.vercel.app/projects/cebu-realty.html',
+    url: '/projects/cebu-realty.html',
   },
   {
     name: 'Gaming Profile',
     description: 'Personal gaming achievements showcase displaying playtime, competitive ranks, and high-end PC build specifications.',
     tags: ['Claude Code'],
-    url: 'https://edrian-gamma.vercel.app/projects/gaming-profile.html',
+    url: '/projects/gaming-profile.html',
   },
   {
     name: 'FreshWave Laundry',
     description: 'Modern laundry service page emphasizing eco-friendly solutions and convenient wash-and-fold options.',
     tags: ['Claude Code'],
-    url: 'https://edrian-gamma.vercel.app/projects/laundry-cebu.html',
+    url: '/projects/laundry-cebu.html',
   },
   {
     name: 'Mandaue Transport Cooperative',
     description: 'Community transport platform featuring cashless payments, GPS tracking, and eco-friendly jeepney services.',
     tags: ['Claude Code'],
-    url: 'https://edrian-gamma.vercel.app/projects/mandaue-transport-cooperative.html',
+    url: '/projects/mandaue-transport-cooperative.html',
   },
   {
     name: 'Villa Melissa HOA',
     description: 'Homeowners association page displaying residential updates and community programming.',
     tags: ['Claude Code'],
-    url: 'https://edrian-gamma.vercel.app/projects/villa-melissa-hoa.html',
+    url: '/projects/villa-melissa-hoa.html',
   },
 ]
 

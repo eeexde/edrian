@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Melissa HOA — Yati, Liloan, Cebu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e6c0;
+    --green-deep: #1a3a2a;
+    --green-mid: #2d5c3f;
+    --green-light: #4a8c62;
+    --cream: #faf7f0;
+    --cream-dark: #f0ebe0;
+    --text-dark: #1a1a1a;
+    --text-mid: #4a4a4a;
+    --text-light: #7a7a7a;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(26, 58, 42, 0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-emblem {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--green-deep);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--gold-light);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+  .nav-brand span { display: block; font-size: 11px; font-family: 'Outfit', sans-serif; color: rgba(255,255,255,0.55); font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--green-deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 68px;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(74, 140, 98, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 60% 80%, rgba(201, 168, 76, 0.06) 0%, transparent 40%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    animation: fadeUp 1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    animation: fadeUp 1s ease 0.1s both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    max-width: 540px;
+    margin: 0 auto 3rem;
+    font-weight: 300;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--green-deep);
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    padding: 14px 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── STATS BAND ── */
+  .stats-band {
+    background: var(--gold);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(26,58,42,0.7);
+    font-weight: 500;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 2rem; }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--green-deep);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-body {
+    font-size: 16px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 640px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--cream);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--green-deep);
+    border-radius: 4px;
+    padding: 3rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 150px; height: 150px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 50%;
+  }
+
+  .about-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-spec {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .about-spec:last-child { border-bottom: none; }
+
+  .spec-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  .spec-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.5;
+  }
+  .spec-text strong {
+    color: rgba(255,255,255,0.95);
+    font-weight: 500;
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── AMENITIES ── */
+  #amenities {
+    background: var(--green-deep);
+  }
+
+  #amenities .section-title { color: white; }
+  #amenities .section-body { color: rgba(255,255,255,0.6); }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .amenity-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .amenity-card:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-3px);
+  }
+
+  .amenity-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.15);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 22px;
+  }
+
+  .amenity-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .amenity-desc {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* ── RULES ── */
+  #rules {
+    background: var(--cream-dark);
+  }
+
+  .rules-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .rules-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .rule-item {
+    background: white;
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.25rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    transition: box-shadow 0.2s;
+  }
+  .rule-item:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+
+  .rule-num {
+    font-weight: 600;
+    color: var(--green-deep);
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── LOCATION / NEARBY ── */
+  #location {
+    background: var(--cream);
+  }
+
+  .nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .nearby-card {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 4px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .nearby-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .nearby-icon {
+    font-size: 28px;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .nearby-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--green-deep);
+    margin-bottom: 4px;
+  }
+
+  .nearby-dist {
+    font-size: 12.5px;
+    color: var(--text-light);
+  }
+
+  /* ── LILOAN ── */
+  #liloan {
+    background: var(--green-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #liloan::before {
+    content: '"Light of the North"';
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  #liloan .section-title { color: white; }
+  #liloan .section-body { color: rgba(255,255,255,0.65); }
+
+  .liloan-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .highlight-item {
+    border-top: 2px solid rgba(201,168,76,0.4);
+    padding-top: 1.5rem;
+  }
+
+  .highlight-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .highlight-body {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  /* ── OFFICERS ── */
+  #officers {
+    background: var(--cream-dark);
+  }
+
+  .officers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .officer-card {
+    background: white;
+    border-radius: 4px;
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    border-top: 3px solid var(--gold);
+    transition: box-shadow 0.2s;
+  }
+  .officer-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.09); }
+
+  .officer-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--green-deep);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold-light);
+    margin: 0 auto 1rem;
+    font-weight: 700;
+  }
+
+  .officer-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--green-deep);
+    margin-bottom: 4px;
+  }
+
+  .officer-role {
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ── NOTICES ── */
+  #notices {
+    background: var(--cream);
+  }
+
+  .notices-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .notice-item {
+    background: white;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: box-shadow 0.2s;
+  }
+  .notice-item:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+
+  .notice-date {
+    background: var(--green-deep);
+    color: var(--gold-light);
+    border-radius: 4px;
+    padding: 8px 12px;
+    text-align: center;
+    flex-shrink: 0;
+    min-width: 56px;
+  }
+  .notice-month { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; display: block; }
+  .notice-day { font-family: 'Playfair Display', serif; font-size: 1.4rem; line-height: 1; display: block; }
+
+  .notice-content { flex: 1; }
+  .notice-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    color: var(--green-deep);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+  }
+  .notice-title-text {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .notice-body { font-size: 13.5px; color: var(--text-light); line-height: 1.5; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--green-deep);
+  }
+
+  #contact .section-title { color: white; }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .contact-icon-box {
+    width: 40px; height: 40px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .contact-value {
+    font-size: 14.5px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.5;
+  }
+
+  .contact-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3px;
+    padding: 10px 14px;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--gold);
+  }
+  .form-textarea { min-height: 90px; resize: vertical; }
+  .form-select option { background: var(--green-deep); }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--green-deep);
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f2219;
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .footer-left {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-left strong { color: rgba(255,255,255,0.6); }
+
+  .footer-right {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    text-align: right;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .about-grid, .rules-layout, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .amenities-grid, .liloan-highlights { grid-template-columns: 1fr 1fr; }
+    .nearby-grid { grid-template-columns: repeat(2, 1fr); }
+    .officers-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-band { gap: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 4rem 1.25rem; }
+    .amenities-grid, .liloan-highlights, .nearby-grid { grid-template-columns: 1fr; }
+    .officers-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-emblem">VM</div>
+    <div class="nav-brand">
+      Villa Melissa HOA
+      <span>Yati, Liloan, Cebu</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#rules">Community Rules</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#officers">Officers</a></li>
+    <li><a href="#notices">Notices</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-pattern"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Homeowners Association</div>
+    <h1 class="hero-title">Villa <em>Melissa</em></h1>
+    <p class="hero-sub">Yati, Liloan, Cebu Philippines</p>
+    <p class="hero-desc">
+      A warm and thriving residential community nestled in the heart of Barangay Yati —
+      where neighbors become family, and every home tells a story.
+    </p>
+    <div class="hero-ctas">
+      <a href="#about" class="btn-primary">Discover Our Community</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stat-item">
+    <span class="stat-num">HLURB</span>
+    <span class="stat-label">Licensed & Registered</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">LTS #030155</span>
+    <span class="stat-label">License to Sell</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">8m</span>
+    <span class="stat-label">Wide Main Roads</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">Brgy. Yati</span>
+    <span class="stat-label">Liloan, Cebu 6002</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">About Us</p>
+        <h2 class="section-title">A Community Built on Comfort & Affordability</h2>
+        <p class="section-body">
+          Villa Melissa Subdivision is a proud residential community located in Sitio Curva, Barangay Yati, Liloan, Cebu — one of the fastest-growing municipalities in Metro Cebu. Developed by Kenrich Development, our subdivision offers quality, affordable homes designed for Filipino families who dream of owning a decent, comfortable space to call their own.
+        </p>
+        <p class="section-body" style="margin-top:1rem;">
+          Our Homeowners Association (HOA) is dedicated to upholding the peace, safety, and well-being of every resident. We work together to maintain our community's standards, organize events, and ensure that Villa Melissa remains a great place to live and grow.
+        </p>
+      </div>
+      <div class="about-visual">
+        <div class="about-card">
+          <h3 class="about-card-title">Subdivision Specifications</h3>
+          <div class="about-spec">
+            <div class="spec-dot"></div>
+            <div class="spec-text">
+              <strong>Major Roads / Entrance</strong>
+              8 meters wide, well-maintained concrete roads
+            </div>
+          </div>
+          <div class="about-spec">
+            <div class="spec-dot"></div>
+            <div class="spec-text">
+              <strong>Underground Drainage System</strong>
+              Proper stormwater management throughout the subdivision
+            </div>
+          </div>
+          <div class="about-spec">
+            <div class="spec-dot"></div>
+            <div class="spec-text">
+              <strong>Individual Septic Tank</strong>
+              Each unit has its own dedicated septic system
+            </div>
+          </div>
+          <div class="about-spec">
+            <div class="spec-dot"></div>
+            <div class="spec-text">
+              <strong>Individual Parking Space</strong>
+              Dedicated parking per household
+            </div>
+          </div>
+          <div class="about-spec">
+            <div class="spec-dot"></div>
+            <div class="spec-text">
+              <strong>Power Supply (VECO)</strong>
+              Ready connection for each unit
+            </div>
+          </div>
+          <div class="about-spec">
+            <div class="spec-dot"></div>
+            <div class="spec-text">
+              <strong>Water Supply Connection</strong>
+              Ready utility connection per unit
+            </div>
+          </div>
+          <div class="about-spec">
+            <div class="spec-dot"></div>
+            <div class="spec-text">
+              <strong>License to Sell</strong>
+              HLURB-CVR AA-2017/03-359 · LTS No. 030155
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="section-inner">
+    <p class="section-label" style="color: var(--gold);">What We Offer</p>
+    <h2 class="section-title">Community Amenities</h2>
+    <p class="section-body">
+      Villa Melissa is designed for comfortable family living, with essential infrastructure and community spaces that make day-to-day life convenient and enjoyable.
+    </p>
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <div class="amenity-icon">🏘️</div>
+        <h3 class="amenity-title">Residential Units</h3>
+        <p class="amenity-desc">Choose from 2-storey townhouses and 1-storey duplex homes, each thoughtfully designed with provisions for bedrooms, living, dining, kitchen, and service areas.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🛣️</div>
+        <h3 class="amenity-title">Wide Paved Roads</h3>
+        <p class="amenity-desc">8-meter wide main roads provide easy access for vehicles, ensuring smooth traffic flow and safe pedestrian walkways throughout the community.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🚗</div>
+        <h3 class="amenity-title">Individual Parking</h3>
+        <p class="amenity-desc">Each unit comes with a designated parking space, giving every homeowner the convenience of secure off-street parking right at their doorstep.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">💧</div>
+        <h3 class="amenity-title">Water & Power Utilities</h3>
+        <p class="amenity-desc">Ready VECO power supply connection and individual water supply ensure that every household has access to essential utilities from day one.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🌿</div>
+        <h3 class="amenity-title">Green Open Spaces</h3>
+        <p class="amenity-desc">Landscaped open areas within the community provide a breath of fresh air, giving children and families space to relax and enjoy outdoor activities.</p>
+      </div>
+      <div class="amenity-card">
+        <div class="amenity-icon">🏛️</div>
+        <h3 class="amenity-title">Community Hall</h3>
+        <p class="amenity-desc">A dedicated community venue for HOA meetings, neighborhood events, celebrations, and gatherings that bring Villa Melissa residents together.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY RULES -->
+<section id="rules">
+  <div class="section-inner">
+    <div class="rules-layout">
+      <div>
+        <p class="section-label">Living Together Well</p>
+        <h2 class="section-title">Community Rules & Guidelines</h2>
+        <p class="section-body">
+          Our community rules exist to protect the rights and well-being of every resident. By following these guidelines, we collectively ensure that Villa Melissa remains a peaceful, clean, and harmonious place to call home.
+        </p>
+        <p class="section-body" style="margin-top: 1rem; font-size: 14px; color: var(--text-light);">
+          Failure to comply with HOA rules may result in written notices, fines, or other actions as deemed appropriate by the Board of Trustees. Residents are encouraged to report concerns to the HOA office.
+        </p>
+      </div>
+      <div>
+        <ul class="rules-list">
+          <li class="rule-item">
+            <span class="rule-num">Rule 01 — HOA Dues</span>
+            Monthly HOA dues must be paid on or before the 5th of each month. Late payment is subject to a penalty fee as determined by the Board.
+          </li>
+          <li class="rule-item">
+            <span class="rule-num">Rule 02 — Noise & Quiet Hours</span>
+            Loud music, parties, or activities that disturb neighbors are prohibited between 10:00 PM and 7:00 AM daily.
+          </li>
+          <li class="rule-item">
+            <span class="rule-num">Rule 03 — Garbage Disposal</span>
+            Segregate biodegradable and non-biodegradable waste. Garbage must be placed in designated collection areas only on scheduled pickup days.
+          </li>
+          <li class="rule-item">
+            <span class="rule-num">Rule 04 — Renovation & Construction</span>
+            All home renovation and construction activities require prior written approval from the HOA. Work is only permitted Monday–Saturday, 7:00 AM to 5:00 PM.
+          </li>
+          <li class="rule-item">
+            <span class="rule-num">Rule 05 — Pets</span>
+            Pets must be kept within the property or on a leash when in common areas. Owners are responsible for cleaning up after their animals.
+          </li>
+          <li class="rule-item">
+            <span class="rule-num">Rule 06 — Vehicle Parking</span>
+            Vehicles must park only in designated spaces. Parking on the main road or common areas that obstructs traffic flow is strictly prohibited.
+          </li>
+          <li class="rule-item">
+            <span class="rule-num">Rule 07 — Visitors & Guests</span>
+            Residents are responsible for the conduct of their visitors. Guests must register with the HOA for overnight stays exceeding 3 days.
+          </li>
+          <li class="rule-item">
+            <span class="rule-num">Rule 08 — Community Cleanliness</span>
+            Every homeowner is responsible for maintaining cleanliness in and around their property, including the sidewalk fronting their unit.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION / NEARBY -->
+<section id="location">
+  <div class="section-inner">
+    <p class="section-label">Where We Are</p>
+    <h2 class="section-title">Conveniently Located in Liloan</h2>
+    <p class="section-body">
+      Villa Melissa is situated in Sitio Curva, Barangay Yati — a strategic location in Liloan, Cebu just minutes from the national highway and within easy reach of essential establishments and services.
+    </p>
+    <div class="nearby-grid">
+      <div class="nearby-card">
+        <span class="nearby-icon">🏫</span>
+        <div class="nearby-name">Schools</div>
+        <div class="nearby-dist">Minutes away · Multiple public & private schools</div>
+      </div>
+      <div class="nearby-card">
+        <span class="nearby-icon">🏥</span>
+        <div class="nearby-name">Hospitals & Clinics</div>
+        <div class="nearby-dist">Nearby medical facilities & health centers</div>
+      </div>
+      <div class="nearby-card">
+        <span class="nearby-icon">🛒</span>
+        <div class="nearby-name">Malls & Markets</div>
+        <div class="nearby-dist">Near SM Consolacion & Gaisano Grand Liloan</div>
+      </div>
+      <div class="nearby-card">
+        <span class="nearby-icon">🏦</span>
+        <div class="nearby-name">Banks & ATMs</div>
+        <div class="nearby-dist">Multiple banking options in the vicinity</div>
+      </div>
+      <div class="nearby-card">
+        <span class="nearby-icon">⛪</span>
+        <div class="nearby-name">San Fernando El Rey Parish</div>
+        <div class="nearby-dist">Historic church, circa 1840s</div>
+      </div>
+      <div class="nearby-card">
+        <span class="nearby-icon">🛣️</span>
+        <div class="nearby-name">National Highway</div>
+        <div class="nearby-dist">A few minutes drive away</div>
+      </div>
+      <div class="nearby-card">
+        <span class="nearby-icon">✈️</span>
+        <div class="nearby-name">Mactan Airport</div>
+        <div class="nearby-dist">~10 km from Liloan center</div>
+      </div>
+      <div class="nearby-card">
+        <span class="nearby-icon">🌊</span>
+        <div class="nearby-name">Silot Bay & Papa Kit's</div>
+        <div class="nearby-dist">Water sports & recreation in Liloan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT LILOAN -->
+<section id="liloan">
+  <div class="section-inner">
+    <p class="section-label" style="color: var(--gold);">Our Town</p>
+    <h2 class="section-title">Life in Liloan, Cebu</h2>
+    <p class="section-body">
+      Known as the "Light of the North," Liloan is a first-class municipality in Metro Cebu with a population of over 160,000. Rich in history, culture, and natural beauty, Liloan is consistently recognized as one of the best-governed municipalities in the Philippines.
+    </p>
+    <div class="liloan-highlights">
+      <div class="highlight-item">
+        <h3 class="highlight-title">Historic Bagacay Lighthouse</h3>
+        <p class="highlight-body">Built in 1857 by the Spaniards and reconstructed in 1904, the Bagacay Point Lighthouse stands 22 meters tall and was declared a National Historical Landmark in 2004. It remains active today using solar energy.</p>
+      </div>
+      <div class="highlight-item">
+        <h3 class="highlight-title">Rosquillos Festival</h3>
+        <p class="highlight-body">Every May, Liloan celebrates the Rosquillos Festival honoring patron saint San Fernando El Rey. The town is famous for Titay's Rosquillos — delicate ring-shaped biscuits baked since 1907 that have become an iconic Cebuano pasalubong.</p>
+      </div>
+      <div class="highlight-item">
+        <h3 class="highlight-title">Adventure at Silot Bay</h3>
+        <p class="highlight-body">Papa Kit's Marina & Fishing Lagoon at Silot Bay offers kayaking, wakeboarding, zipline, wall climbing, and a floating restaurant — all within easy reach of Villa Melissa.</p>
+      </div>
+      <div class="highlight-item">
+        <h3 class="highlight-title">Award-Winning Governance</h3>
+        <p class="highlight-body">In 2019, Liloan was awarded Top Model Municipality in the Philippines. It was also recognized as the top Education Hub, top Retirement Hub, and Most Resilient Municipality for 2019 and 2020.</p>
+      </div>
+      <div class="highlight-item">
+        <h3 class="highlight-title">Heritage & Culture</h3>
+        <p class="highlight-body">The San Fernando El Rey Parish is one of the oldest churches in Cebu, dating to the 1840s. Uniquely, it is the only Catholic church in Cebu that faces west — a design intended to shield morning worshippers from the sun.</p>
+      </div>
+      <div class="highlight-item">
+        <h3 class="highlight-title">Pier 88 — Gateway North</h3>
+        <p class="highlight-body">Inaugurated in May 2023, Pier 88 connects Liloan to Camotes Islands, Lapu-Lapu City, and Cebu City — strengthening the town's role as a vital transport and commerce hub in Central Visayas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICERS -->
+<section id="officers">
+  <div class="section-inner">
+    <p class="section-label">Leadership</p>
+    <h2 class="section-title">HOA Board of Trustees</h2>
+    <p class="section-body">
+      Our board is composed of dedicated homeowners who volunteer their time and expertise to serve our community. Elections are held every two years in accordance with HOA by-laws.
+    </p>
+    <div class="officers-grid">
+      <div class="officer-card">
+        <div class="officer-avatar">P</div>
+        <div class="officer-name">President</div>
+        <div class="officer-role">HOA Board Chair · Elected Officer</div>
+      </div>
+      <div class="officer-card">
+        <div class="officer-avatar">VP</div>
+        <div class="officer-name">Vice President</div>
+        <div class="officer-role">Operations & Compliance</div>
+      </div>
+      <div class="officer-card">
+        <div class="officer-avatar">S</div>
+        <div class="officer-name">Secretary</div>
+        <div class="officer-role">Records & Communications</div>
+      </div>
+      <div class="officer-card">
+        <div class="officer-avatar">T</div>
+        <div class="officer-name">Treasurer</div>
+        <div class="officer-role">Finance & Dues Management</div>
+      </div>
+      <div class="officer-card">
+        <div class="officer-avatar">A</div>
+        <div class="officer-name">Auditor</div>
+        <div class="officer-role">Financial Oversight</div>
+      </div>
+      <div class="officer-card">
+        <div class="officer-avatar">PRO</div>
+        <div class="officer-name">PRO Officer</div>
+        <div class="officer-role">Public Relations & Events</div>
+      </div>
+      <div class="officer-card">
+        <div class="officer-avatar">B1</div>
+        <div class="officer-name">Board Member 1</div>
+        <div class="officer-role">Community Services</div>
+      </div>
+      <div class="officer-card">
+        <div class="officer-avatar">B2</div>
+        <div class="officer-name">Board Member 2</div>
+        <div class="officer-role">Security & Safety</div>
+      </div>
+    </div>
+    <p style="margin-top: 2rem; font-size: 13px; color: var(--text-light); text-align: center;">
+      Contact the HOA office to learn more about current officers or to inquire about the next HOA election.
+    </p>
+  </div>
+</section>
+
+<!-- NOTICES -->
+<section id="notices">
+  <div class="section-inner">
+    <p class="section-label">Stay Informed</p>
+    <h2 class="section-title">Community Notices & Announcements</h2>
+    <div class="notices-list">
+      <div class="notice-item">
+        <div class="notice-date">
+          <span class="notice-month">Apr</span>
+          <span class="notice-day">15</span>
+        </div>
+        <div class="notice-content">
+          <span class="notice-tag">General Assembly</span>
+          <div class="notice-title-text">Quarterly HOA General Assembly Meeting</div>
+          <div class="notice-body">All homeowners are invited to attend the quarterly general assembly. Agenda includes budget review, maintenance updates, and community project proposals. Venue: HOA Community Hall, 4:00 PM.</div>
+        </div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-date">
+          <span class="notice-month">Apr</span>
+          <span class="notice-day">20</span>
+        </div>
+        <div class="notice-content">
+          <span class="notice-tag">Maintenance</span>
+          <div class="notice-title-text">Scheduled Road Maintenance & Pothole Repair</div>
+          <div class="notice-body">Crews will be conducting road repair works along the main entrance and inner roads. Please expect minor traffic delays from 8:00 AM to 4:00 PM. Kindly use alternate routes where possible.</div>
+        </div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-date">
+          <span class="notice-month">May</span>
+          <span class="notice-day">05</span>
+        </div>
+        <div class="notice-content">
+          <span class="notice-tag">Reminder</span>
+          <div class="notice-title-text">HOA Monthly Dues — May Deadline</div>
+          <div class="notice-body">Monthly HOA dues are due on or before May 5. Please settle your account at the HOA office or via the designated payment channels to avoid late payment penalties.</div>
+        </div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-date">
+          <span class="notice-month">May</span>
+          <span class="notice-day">10</span>
+        </div>
+        <div class="notice-content">
+          <span class="notice-tag">Community Event</span>
+          <div class="notice-title-text">Liloan Rosquillos Festival — Community Participation</div>
+          <div class="notice-body">In celebration of Liloan's annual Rosquillos Festival this May, the HOA will organize a community clean-up and street beautification drive. All residents are encouraged to participate.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label" style="color: var(--gold);">Reach Us</p>
+    <h2 class="section-title">Contact the HOA</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p style="font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 1rem;">
+          Have questions, concerns, or requests? Our HOA office is here to assist all Villa Melissa homeowners and residents.
+        </p>
+        <div class="contact-item">
+          <div class="contact-icon-box">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-value">Villa Melissa Subdivision<br>Sitio Curva, Barangay Yati<br>Liloan, Cebu 6002, Philippines</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">📞</div>
+          <div>
+            <div class="contact-label">Phone / Mobile</div>
+            <div class="contact-value">HOA Office: Please inquire at the subdivision admin office</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">🕐</div>
+          <div>
+            <div class="contact-label">Office Hours</div>
+            <div class="contact-value">Monday – Friday: 8:00 AM – 5:00 PM<br>Saturday: 8:00 AM – 12:00 NN</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">🚨</div>
+          <div>
+            <div class="contact-label">Emergency Reference</div>
+            <div class="contact-value">Liloan Police Station: (032) 564-2200<br>Liloan Fire Station: (032) 564-3781<br>Liloan Mayor's Office: (032) 564-3131</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3 class="form-title">Send a Message</h3>
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Block & Lot Number</label>
+          <input type="text" class="form-input" placeholder="e.g. Block 3, Lot 12">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Concern Type</label>
+          <select class="form-select">
+            <option value="">Select a concern</option>
+            <option>HOA Dues Inquiry</option>
+            <option>Maintenance Request</option>
+            <option>Noise / Disturbance</option>
+            <option>Renovation Approval</option>
+            <option>Community Suggestion</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Describe your concern or message..."></textarea>
+        </div>
+        <button class="form-submit" onclick="alert('Thank you! Your message has been received. We will get back to you soon.')">Submit Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <strong>Villa Melissa Homeowners Association</strong><br>
+    Sitio Curva, Barangay Yati, Liloan, Cebu 6002 · Philippines
+  </div>
+  <div class="footer-right">
+    HLURB LTS No. 030155 · HLURB-CVR AA-2017/03-359<br>
+    &copy; 2025 Villa Melissa HOA. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
